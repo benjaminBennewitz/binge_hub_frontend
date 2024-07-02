@@ -1,1 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
+/*###############################
+###
+###     GLOBAL STYLES
+###     BINGE HUB FRONTEND
+###     BASED ON: ANGULAR 17
+###     AUTHOR: Benjamin Benenwitz
+###
+###
+***       ██████╗  ▀█
+***       ██╔══██╗ █▄
+***       ██████╦╝
+***       ██╔══██╗
+***       ██████╦╝
+***       ╚═════╝
+###
+###
+#################################*/
+
+/*
+### GLOBAL STYLES
+*/
+
+@import 'colors.scss';
+
+* {
+    border: none;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: $background;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-sidenav-container {
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+mat-drawer-content {
+    overflow-x: hidden !important;
+}
+
+/*
+### DEFAULT STYLES
+*/
+
+.flex-sb-c{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-fs-c{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.pad-rl-64{
+    padding:0 64px;
+}
