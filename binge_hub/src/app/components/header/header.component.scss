@@ -27,11 +27,15 @@ header{
     height: 100px;
     background: linear-gradient(to bottom, rgba($primary, 0.5), rgba($background, 0.5));
     color: $text;
+
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 h1{
-    line-height: 0;
-    font-size: 30px;
+     font-size: 20px;
+     line-height: 0;
 }
 
 button{
@@ -43,8 +47,8 @@ button{
     transition: all 250ms;
     cursor: pointer;
     &:hover{
-        background-color: $secondary !important;
-        color: $primary !important;
+        background-color: $accent !important;
+        color: $background !important;
     }
 }
 
@@ -55,13 +59,46 @@ mat-icon{
     margin-right: 16px;
 }
 
+.logo-text {
+    color: $text;
+    border: solid 3px;
+    border-image: linear-gradient(to right, #09f1b8, #00a2ff, #ff00d2, #fed90f) 1;
+    padding: 8px 18px;
+    margin-left: 64px;
+    display: flex;
+    align-items: center;
+
+    mat-icon {
+        color: $text;
+    }
+}
+
+.fade-out {
+    animation: fadeOutAnimation 0.5s ease forwards;
+  }
+  
+  @keyframes fadeOutAnimation {
+    0% {
+      opacity: 0;
+      top:-100px
+    }
+    100% {
+      opacity: 1;
+      top:0;
+    }
+  }
+
 /* MEDIA QUERRYS*/
 @media (max-width: 720px) {
     .pad-rl-64{
         padding:0 16px;
     }
 
+    .logo-text{
+        margin-left: 16px;
+    }
+
     h1{
-        font-size: 20px;
+        font-size: 16px;
     }
 }

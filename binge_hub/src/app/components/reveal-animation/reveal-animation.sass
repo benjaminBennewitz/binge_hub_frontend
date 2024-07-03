@@ -1,0 +1,130 @@
+/*###############################
+ ###
+ ###     GLOBAL STYLES FOR REVEAL ABIMATIOB
+ ###     BIBGE HUB FROBTEBD
+ ###     BASED OB: ABGULAR 17
+ ###     AUTHOR: Benjamin Benenwitz
+ ###
+ ###
+ ***       ██████╗  ▀█
+ ***       ██╔══██╗ █▄
+ ***       ██████╦╝
+ ***       ██╔══██╗
+ ***       ██████╦╝
+ ***       ╚═════╝
+ ###
+ ###
+ #################################*/
+
+@import '../../../colors.scss'
+
+.animation-wrapper 
+  height: 100vh
+  width: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+  background-color: $background
+  color: $text
+  font-size: 200px
+  z-index: 999
+  position: fixed
+  top: 0
+  left: 0
+  overflow: hidden !important
+  
+  &.hidden
+    display: none
+
+  &.pulse
+    animation: pulse 1s infinite
+
+
+//---------------------------------------------------
+// CHANGE THESE
+$series: '▶', 'BINGE', 'HUB',
+$duration: 0.3
+$transition: 0.7
+
+//---------------------------------------------------
+// APPEND EXTRA ITEM - An extra item is needed if the series is of odd length
+@if abs(length($series)) % 2 == 1
+  $lastItem: nth($series, 1)
+  $series: append($series, $lastItem)
+
+//---------------------------------------------------
+// DON'T TOUCH THESE
+$seriesLength: length($series)
+$seriesSplitLength: calc($seriesLength / 2)
+$itemDuration: $duration + $transition
+$twiceItemDuration: $itemDuration * 2
+$totalDuration: $itemDuration * $seriesLength
+
+//---------------------------------------------------
+// STYLE STUFF
+
+.text
+  color: yellow
+  font-size: 300px
+  font-family: 'Roboto'
+  font-weight: 400
+  filter: url(#gooey)
+  
+      
+  &::before, &::after
+    position: absolute
+    opacity: 0
+    transform: translate(-50%,-50%)
+    animation-duration: $totalDuration + s
+    animation-timing-function: ease
+    animation-iteration-count: 1 forwards
+    filter: blur(9px)
+
+  &::before
+    content: nth($series, $seriesLength - 1)
+    animation-name: items-odd
+
+  &::after
+    content: nth($series, $seriesLength)
+    animation-name: items-even
+    animation-delay: $itemDuration + s
+
+//---------------------------------------------------
+// TRANSITION ANIMATIONS
+
+=keyframes($index)
+  @for $i from 1 through $seriesLength
+    #{percentage(calc(1 / $seriesLength) * $i - calc($duration / $totalDuration))}
+      opacity: abs($i) % 2
+    #{percentage(calc(1 / $seriesLength) * $i)}
+      opacity: abs($i) % 2
+  @for $i from 1 through $seriesSplitLength
+    $item: $i * 2 - $index
+    #{percentage(($i - 1) * calc(1 / $seriesSplitLength))}
+      content: nth($series, $item)
+    #{percentage($i * calc(1 / $seriesSplitLength) - 0.000001)}
+      content: nth($series, $item)
+
+@keyframes items-odd
+  +keyframes(1)
+
+@keyframes items-even
+  +keyframes(0)
+
+@keyframes pulse
+  0% 
+    opacity: 0.2
+    transform: scale(0.5)
+  50% 
+    opacity: 0
+    transform: scale(2.2)
+
+  100% 
+    opacity: 0
+    transform: scale(4.5)
+
+
+/* MEDIA QUERRYS*/
+@media (max-width: 720px)
+  .text
+    font-size: 100%

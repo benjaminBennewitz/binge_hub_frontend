@@ -1,6 +1,103 @@
+/*###############################
+###
+###     GLOBAL STYLES FOR HEADER
+###     BINGE HUB FRONTEND
+###     BASED ON: ANGULAR 17
+###     AUTHOR: Benjamin Benenwitz
+###
+###
+***       ██████╗  ▀█
+***       ██╔══██╗ █▄
+***       ██████╦╝
+***       ██╔══██╗
+***       ██████╦╝
+***       ╚═════╝
+###
+###
+#################################*/
+
+@import '../../../colors.scss';
+
+/*
+### GLOBAL STYLES
+*/
+
+section{
+    background-image: url(../../../assets/img/background.jpg);
+    object-fit: cover;
+}
+
+h1{
+    font-size: 50px;
+    line-height: 1;
+}
+
+p{
+    line-height: 1;
+    font-size: 20px;
+}
+
+form{
+    margin-top: 32px;
+    width: 100%;
+    padding:0 16px;
+
+    button{
+        background-color: $primary !important;
+        color:$text !important;
+        border-radius: 20px;
+        width: 120px;
+        height: 40px;
+        margin-bottom: 18px;
+        transition: all 250ms;
+        cursor: pointer;
+        &:hover{
+            background-color: $accent !important;
+            color: $background !important;
+        }
+    }
+
+    mat-label{
+        color:$text;
+    }
+
+    input{
+        color:$text !important;
+    }
+}
+
 .start-bg{
     width: 100%;
     height: 100vh;
 
-    //background-image: ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba($background, $alpha: 0.8);    
+}
+
+.start-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:16px;
+
+    color:$text;
+}
+
+/* MEDIA QUERRYS*/
+@media (max-width: 720px) {
+    .pad-rl-64{
+        padding:0 16px;
+    }
+
+    h1{
+        font-size: 26px;
+    }
+
+    p{
+        font-size: 14px;
+    }
 }
