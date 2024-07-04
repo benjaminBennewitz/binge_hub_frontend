@@ -1,1 +1,35 @@
-<p>login works!</p>
+<section>
+    <div class="login-bg">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="back-icon"><mat-icon (click)="stepBack()">arrow_back</mat-icon></div>
+            <h1>Login</h1>
+            <div>
+                <mat-form-field>
+                    <mat-label>E-Mail</mat-label>
+                    <input matInput formControlName="email" type="email" required name="email">
+                    <mat-error
+                        *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
+                        <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</span>
+                        <span *ngIf="loginForm.get('email')?.errors?.['email']">Please enter a valid email address.</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" type="password" required minlength="6" maxlength="18" name="password">
+                    <mat-error
+                        *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+                        <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</span>
+                        <span *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</span>
+                        <span *ngIf="loginForm.get('password')?.errors?.['maxlength']">Password cannot be more than 18 characters long.</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="flex-c-c gap-64">
+                <button mat-button [disabled]="loginForm.invalid">
+                    <mat-icon>login</mat-icon> Log In
+                </button>
+            </div>
+        </form>
+        <app-legals></app-legals>
+    </div>
+</section>

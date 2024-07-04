@@ -1,0 +1,156 @@
+/*###############################
+###
+###     GLOBAL STYLES FOR OVERVIEW
+###     BINGE HUB FRONTEND
+###     BASED ON: ANGULAR 17
+###     AUTHOR: Benjamin Benenwitz
+###
+###
+***       ██████╗  ▀█
+***       ██╔══██╗ █▄
+***       ██████╦╝
+***       ██╔══██╗
+***       ██████╦╝
+***       ╚═════╝
+###
+###
+#################################*/
+
+@import '../../../colors.scss';
+
+/*
+### GLOBAL STYLES
+*/
+
+section {
+    background-color: $background;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+}
+
+.wrapper{
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+h1 {
+    font-size: 50px;
+    line-height: 1;
+}
+
+h2, h3, h4, h5{
+    font-size: 24px;
+    line-height: 2;
+    color: $text;
+}
+
+p {
+    line-height: 1.3;
+    font-size: 20px;
+}
+
+button {
+    background-color: $primary !important;
+    color: $text !important;
+    border-radius: 20px;
+    width: 180px;
+    height: 50px;
+    margin: 32px 0;
+    transition: all 250ms;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $accent !important;
+        color: $background !important;
+    }
+}
+
+.overview-bg {
+    background-image: url(../../../assets/img/register.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    width: 100%;
+}
+
+.preview-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 0 64px;
+
+    color: $text;
+
+    width: 500px;
+    margin-top: 200px;
+    transition: all 250ms;
+
+    &:hover{
+        background-color: rgba(#000000, 0.5);
+        border-radius: 20px;
+    }
+}
+
+.media-bar{
+    display: flex;
+    flex-direction: column;
+    padding:0 64px;
+}
+
+.this-is-new{
+    display: flex;
+    justify-content: flex-start;
+    align-items: first baseline;
+    gap: 32px;
+
+    max-width: 100vw;
+    overflow-x: auto;
+
+    img{
+        width: 18%;
+        height: auto;
+    }
+}
+
+/* MEDIA QUERRYS*/
+@media (max-width: 720px) {
+    h1 {
+        font-size: 26px;
+    }
+
+    p{
+        font-size: 14px;
+    }
+
+    .pad-rl-64 {
+        padding: 0 16px;
+    }
+
+    .preview-text{
+        padding:0 16px;
+        width: 90%;
+    }
+
+    .media-bar{
+        padding:0 16px;
+    }
+
+    .this-is-new{
+        gap: 24px;
+    
+        img{
+            width: 34%;
+            height: auto;
+        }
+    }
+}

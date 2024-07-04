@@ -1,6 +1,8 @@
 <section>
     <header class="flex-sb-c hide" [ngClass]="{'fade-out': fadeOut}">
-        <div class="flex-fs-c logo-text" data-text="BINGE HUB"><mat-icon>play_circle</mat-icon><h1>BINGE HUB</h1></div>
-        <div class="pad-rl-64"><button mat-raised-button ><mat-icon>login</mat-icon>Login</button></div>
+        <div class="flex-fs-c logo-text" data-text="BINGE HUB"><mat-icon>play_circle</mat-icon><a href="/start"><h1>BINGE HUB</h1></a></div>
+        <div id="logIn" class="pad-rl-64 hide"><button mat-raised-button (click)="toLogin()"><mat-icon>login</mat-icon>Login</button></div>
+
+        <div id="logOut" class="pad-rl-64 hide"><button mat-raised-button (click)="logOut()"><mat-icon>logout</mat-icon>Log out</button></div>
     </header>
 </section>

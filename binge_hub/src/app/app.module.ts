@@ -33,6 +33,9 @@ import { StartComponent } from './components/start/start.component';
 import { RevealAnimationComponent } from './components/reveal-animation/reveal-animation.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LegalsComponent } from './components/legals/legals.component';
+import { SnackMsgComponent } from './components/snack-msg/snack-msg.component';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { ButtonVisibilityService } from './services/button-visibility.service';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,8 @@ import { LegalsComponent } from './components/legals/legals.component';
     StartComponent,
     RevealAnimationComponent,
     LegalsComponent,
+    SnackMsgComponent,
+    SnackbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +79,8 @@ import { LegalsComponent } from './components/legals/legals.component';
     HttpClientModule,
   ],
   providers: [
-    
+    SnackbarComponent,
+    ButtonVisibilityService,
   ],
   bootstrap: [AppComponent],
 })

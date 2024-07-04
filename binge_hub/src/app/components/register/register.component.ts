@@ -73,4 +73,11 @@ export class RegisterComponent implements OnInit {
 
     console.log('Form data to be submitted:', body);
   }
+
+    /**
+   * step back helper function
+   */
+    stepBack(){
+      window.history.back();
+    }
 }

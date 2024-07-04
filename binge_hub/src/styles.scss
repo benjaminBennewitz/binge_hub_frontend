@@ -29,6 +29,7 @@
 html,
 body {
     height: 100%;
+   //overflow:  hidden;
 }
 
 body {
@@ -85,6 +86,10 @@ mat-drawer-content {
     padding:0 64px;
 }
 
+.mr-b-120{
+    margin-bottom: 120px;;
+}
+
 .hide{
     display: none;
 }
@@ -93,4 +98,47 @@ mat-drawer-content {
     background-color: transparent !important;
     border: 1.5px solid transparent !important; /* Dies ist notwendig, um den Rahmen sichtbar zu machen */
     border-image: linear-gradient(to right, #09f1b8, #00a2ff, #ff00d2, #fed90f) 1 !important;
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+    background-color: $accent !important;
+}
+
+.mat-mdc-snack-bar-label.mdc-snackbar__label{
+    color:$background !important;
+}
+
+/* Spinner styles */
+.costum-spinner::ng-deep circle{
+    stroke: $primary !important;
+    width: 50px;
+    height: auto;
+}
+
+/* STYLES FOR SCROLLBARS */
+/* Chrome specific styles */
+.chrome{
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 50px $accent; 
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: $primary; 
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba($primary, 0.7); 
+    }
+}
+
+/* Firefox specific styles */
+.firefox {
+    scrollbar-color: $primary $accent; 
+    * {
+        scrollbar-width: thin;
+    }
 }

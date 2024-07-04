@@ -1,6 +1,6 @@
 /*###############################
 ###
-###     GLOBAL STYLES
+###     GLOBAL STYLES FOR REGISTER
 ###     BINGE HUB FRONTEND
 ###     BASED ON: ANGULAR 17
 ###     AUTHOR: Benjamin Benenwitz
@@ -23,8 +23,10 @@
 @import '../../../colors.scss';
 
 section {
-    background-image: url(../../../assets/img/background.jpg);
-    object-fit: cover;
+    background-image: url(../../../assets/img/register.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     width: 100%;
     height: 100vh;
@@ -110,27 +112,6 @@ form {
     }
 }
 
-.legals {
-    position: fixed;
-    bottom: 32px;
-
-    color: $text;
-    cursor: pointer;
-
-    p {
-        font-size: 16px;
-        padding: 8px 16px;
-        transition: all 250ms;
-        border-radius: 20px;
-
-        &:hover {
-            background-color: $accent;
-            color: $background;
-            transform: scale(1.1);
-        }
-    }
-}
-
 /* MEDIA QUERRYS*/
 @media (max-width: 720px) {
     h1 {
@@ -138,10 +119,6 @@ form {
     }
 
     p {
-        font-size: 14px;
-    }
-
-    .legals p {
         font-size: 14px;
     }
 }

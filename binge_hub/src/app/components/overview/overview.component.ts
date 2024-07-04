@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-overview',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrl: './overview.component.scss'
 })
 export class OverviewComponent {
+  constructor(
+  ) {}
 
+  ngOnInit(): void {
+    
+  }
 }
