@@ -4,7 +4,7 @@
             <h1>Movies, TV shows, and more</h1>
             <p>Watch whenever you want wherever you want</p>
             <p>Enter your email to create or restart your subscription</p>
-            <form class="flex-c-c gap-16">
+            <form class="flex-c-c">
                 <mat-form-field class="example-full-width">
                     <mat-label>Email</mat-label>
                     <input type="email" matInput [formControl]="emailFormControl">
@@ -15,8 +15,9 @@
                     <mat-error>Email is <strong>required</strong></mat-error>
                     }
                 </mat-form-field>
-                <div><button mat-raised-button>Sign Up ></button></div>
+                <div><button mat-raised-button (click)="toSignUp()">Sign Up ></button></div>
             </form>
         </div>
+        <app-legals></app-legals>
     </div>
 </section>

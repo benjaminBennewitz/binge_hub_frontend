@@ -1,0 +1,147 @@
+/*###############################
+###
+###     GLOBAL STYLES
+###     BINGE HUB FRONTEND
+###     BASED ON: ANGULAR 17
+###     AUTHOR: Benjamin Benenwitz
+###
+###
+***       ██████╗  ▀█
+***       ██╔══██╗ █▄
+***       ██████╦╝
+***       ██╔══██╗
+***       ██████╦╝
+***       ╚═════╝
+###
+###
+#################################*/
+
+/*
+### GLOBAL STYLES
+*/
+
+@import '../../../colors.scss';
+
+section {
+    background-image: url(../../../assets/img/background.jpg);
+    object-fit: cover;
+
+    width: 100%;
+    height: 100vh;
+}
+
+.register-bg {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba($background, $alpha: 0.8);
+}
+
+form {
+    h1 {
+        font-size: 30px;
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $background;
+    color: $text;
+
+    padding:32px;
+    border-radius: 20px;
+
+    height: fit-content;
+    width: 350px;
+
+    button {
+        background-color: $primary !important;
+        color: $text !important;
+        border-radius: 20px;
+        width: 180px;
+        height: 50px;
+        margin: 32px 0;
+        transition: all 250ms;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $accent !important;
+            color: $background !important;
+        }
+    }
+
+    button[disabled] {
+        opacity: 0.5;
+    }
+
+    mat-label {
+        color: $text;
+    }
+
+    input {
+        color: $text !important;
+    }
+}
+
+.back-icon {
+    width: 100%;
+    transition: all 250ms;
+
+    display: flex;
+    justify-content: flex-start;
+
+    mat-icon {
+        transition: all 250ms;
+        padding: 8px;
+
+        &:hover {
+            background-color: $accent;
+            transform: scale(1.1);
+            color: $background;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    }
+}
+
+.legals {
+    position: fixed;
+    bottom: 32px;
+
+    color: $text;
+    cursor: pointer;
+
+    p {
+        font-size: 16px;
+        padding: 8px 16px;
+        transition: all 250ms;
+        border-radius: 20px;
+
+        &:hover {
+            background-color: $accent;
+            color: $background;
+            transform: scale(1.1);
+        }
+    }
+}
+
+/* MEDIA QUERRYS*/
+@media (max-width: 720px) {
+    h1 {
+        font-size: 26px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .legals p {
+        font-size: 14px;
+    }
+}

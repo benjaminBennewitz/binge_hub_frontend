@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class RevealAnimationComponent implements OnInit {
 
   ngOnInit(): void {
+    // controls the start animation
     setTimeout(() => {
       const animationWrapper = document.querySelector('.animation-wrapper') as HTMLElement | null;
 

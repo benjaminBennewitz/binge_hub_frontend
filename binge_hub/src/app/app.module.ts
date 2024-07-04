@@ -1,8 +1,6 @@
 import { LoginComponent } from './components/login/login.component';
 import { OverviewComponent } from './components/overview/overview.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ImprintComponent } from './components/imprint/imprint.component';
-import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { RegisterComponent } from './components/register/register.component';
 
 import { AppComponent } from './app.component';
@@ -34,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StartComponent } from './components/start/start.component';
 import { RevealAnimationComponent } from './components/reveal-animation/reveal-animation.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LegalsComponent } from './components/legals/legals.component';
 
 @NgModule({
   declarations: [
@@ -41,11 +40,10 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     OverviewComponent,
     HeaderComponent,
-    ImprintComponent,
-    PrivacyPolicyComponent,
     RegisterComponent,
     StartComponent,
     RevealAnimationComponent,
+    LegalsComponent,
   ],
   imports: [
     BrowserModule,
