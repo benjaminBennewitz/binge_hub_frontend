@@ -91,7 +91,7 @@ mat-drawer-content {
 }
 
 .hide{
-    display: none;
+    display: none !important;
 }
 
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {

@@ -156,10 +156,10 @@ a{
 /* MEDIA QUERRYS*/
 @media (max-width: 720px) {
     .show-on-mobile{
-        display: flex;
+        display: block;
     }
     .hide-on-mobile{
-        display: none;
+        display: none !important;
     }
 
     .default-button-mobile{

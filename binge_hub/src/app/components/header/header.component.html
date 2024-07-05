@@ -3,6 +3,7 @@
         <div class="flex-fs-c" [ngClass]="{'overview-logo-text': isOverviewRoute, 'default-logo-text': !isOverviewRoute}" data-text="BINGE HUB">
             <mat-icon>play_circle</mat-icon><a href="/start"><h1>BINGE HUB</h1></a>
         </div>
+
         <div id="logIn" class="hide-on-mobile pad-rl-64 hide">
             <button [ngClass]="{'default-button': !isOverviewRoute}" mat-raised-button (click)="toLogin()">
                 <mat-icon>login</mat-icon>Login
@@ -10,7 +11,7 @@
         </div>
 
         <!-- only for small viewports-->
-        <button class="show-on-mobile" [ngClass]="{'default-button-mobile': !isOverviewRoute}" mat-raised-button (click)="toLogin()">
+        <button id="logIn2" class="show-on-mobile hide" [ngClass]="{'default-button-mobile': !isOverviewRoute}" mat-raised-button (click)="toLogin()">
             <mat-icon>login</mat-icon>
         </button>
 

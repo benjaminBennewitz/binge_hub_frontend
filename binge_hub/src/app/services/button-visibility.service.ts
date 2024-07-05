@@ -29,14 +29,17 @@ export class ButtonVisibilityService {
     const currentURL = this.router.url;
 
     const logInButton = document.getElementById('logIn');
+    const logInButton2 = document.getElementById('logIn2');
     const logOutButton = document.getElementById('logOut');
 
-    if (logInButton && logOutButton) {
+    if (logInButton && logInButton2 && logOutButton) {
       if (currentURL !== '/overview') {
         logInButton.classList.remove('hide');
+        logInButton2.classList.remove('hide');
         logOutButton.classList.add('hide');
       } else {
         logInButton.classList.add('hide');
+        logInButton2.classList.add('hide');
         logOutButton.classList.remove('hide');
       }
     }
