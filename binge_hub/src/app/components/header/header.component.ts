@@ -1,7 +1,8 @@
-import { Component, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 import { ButtonVisibilityService } from '../../services/button-visibility.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,7 @@ import { ButtonVisibilityService } from '../../services/button-visibility.servic
 })
 export class HeaderComponent {
   fadeOut: boolean = false;
+  isOverviewRoute: boolean = false;
 
   constructor(
     private router: Router,
@@ -20,6 +22,18 @@ export class HeaderComponent {
   ngOnInit(): void {
     this.buttonVisibilityService.manageButtonsBasedOnURL();
     this.displayHeader();
+    this.checkRoutes();
+  }
+
+  /**
+   * detect the routes and control the right class
+   */
+  checkRoutes(){
+    this.router.events
+      .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.isOverviewRoute = event.urlAfterRedirects === '/overview';
+      });
   }
 
   /**

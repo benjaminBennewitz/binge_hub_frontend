@@ -1,51 +1,64 @@
 <section>
     <div class="wrapper">
         <div class="overview-bg">
-            <div class="preview-text">
-                <h1>Breakout</h1> <!--title-->
-                <p>"Experience the breathless suspense of a perfectly planned prison break in this gripping movie.
-                    Follow as a group of prisoners fight against all odds to regain their freedom.
-                    Intrigue, unexpected twists and the relentless drive for freedom merge into a nail-biting thriller
-                    that will keep the viewer gripped until the very last second."
-                </p> <!--description-->
-                <div class="flex-c-c gap-64">
-                    <button mat-button>
-                        <mat-icon>play_arrow</mat-icon> Log In
-                    </button>
+            <div class="background-video-container">
+                <video autoplay muted loop id="background-video">
+                    <source draggable="false" src="../../../assets/video/teaser.mp4" type="video/mp4"> <!--video data-->
+                    Your browser does not support the video tag.
+                </video>
+                <div class="preview-text">
+                    <h1>Breakout</h1> <!--title-->
+                    <p>"Experience the breathless suspense of a perfectly planned prison break in this gripping movie.
+                        Follow as a group of prisoners fight against all odds to regain their freedom.
+                        Intrigue, unexpected twists and the relentless drive for freedom merge into a nail-biting
+                        thriller
+                        that will keep the viewer gripped until the very last second."
+                    </p> <!--description-->
+                    <div class="flex-c-c gap-64">
+                        <button mat-button><mat-icon>play_arrow</mat-icon> PLAY</button>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="media-bar">
             <h2>New on BINGE HUB</h2>
-            <div class="this-is-new">
-                <img src="../../../assets/img/login.jpg">
-                <img src="../../../assets/img/login.jpg">
-                <img src="../../../assets/img/login.jpg">
-                <img src="../../../assets/img/login.jpg">
-                <img src="../../../assets/img/login.jpg">
+            <div class="media-thumbs-container" matTooltip="SHIFT + Scroll" [matTooltipPosition]="position.value!" matTooltipShowDelay="550">
+                <img draggable="false" src="../../../assets/img/breakout.jpg">
+                <img draggable="false" src="../../../assets/img/friendship.jpg">
+                <img draggable="false" src="../../../assets/img/majestic-wales.jpg">
+                <img draggable="false" src="../../../assets/img/whispering-shadows.jpg">
+                <img draggable="false" src="../../../assets/img/babys-secrets.jpg">
+                <img draggable="false" src="../../../assets/img/world-of-wonders.jpg">
+                <img draggable="false" src="../../../assets/img/48survive.jpg">
             </div>
         </div>
 
         <div class="media-bar">
             <h3>Documentary</h3>
-            <div class="this-is-new">
-                <img src="../../../assets/img/register.jpg">
-                <img src="../../../assets/img/register.jpg">
-                <img src="../../../assets/img/register.jpg">
-                <img src="../../../assets/img/register.jpg">
-                <img src="../../../assets/img/register.jpg">
+            <div class="media-thumbs-container" matTooltip="SHIFT + Scroll" [matTooltipPosition]="position.value!" matTooltipShowDelay="550">
+                <img draggable="false" src="../../../assets/img/majestic-wales.jpg">
+                <img draggable="false" src="../../../assets/img/world-of-wonders.jpg">
+                <img draggable="false" src="../../../assets/img/babys-secrets.jpg">
             </div>
         </div>
 
         <div class="media-bar mr-b-120">
             <h4>Drama</h4>
-            <div class="this-is-new">
-                <img src="../../../assets/img/login.jpg">
-                <img src="../../../assets/img/login.jpg">
-                <img src="../../../assets/img/login.jpg">
-                <img src="../../../assets/img/login.jpg">
-                <img src="../../../assets/img/login.jpg">
+            <div class="media-thumbs-container" matTooltip="SHIFT + Scroll" [matTooltipPosition]="position.value!" matTooltipShowDelay="550">
+                <img draggable="false" src="../../../assets/img/friendship.jpg">
+                <img draggable="false" src="../../../assets/img/48survive.jpg">
+                <img draggable="false" src="../../../assets/img/breakout.jpg">
+                <img draggable="false" src="../../../assets/img/crime.jpg">
+                <img draggable="false" src="../../../assets/img/whispering-shadows.jpg">
+            </div>
+        </div>
+
+        <div class="media-bar mr-b-120">
+            <h4>Rommance</h4>
+            <div class="media-thumbs-container" matTooltip="SHIFT + Scroll" [matTooltipPosition]="position.value!" matTooltipShowDelay="550">
+                <img draggable="false" src="../../../assets/img/when-i-met-you.jpg">
+                <img draggable="false" src="../../../assets/img/hate-you.jpg">
             </div>
         </div>
     </div>

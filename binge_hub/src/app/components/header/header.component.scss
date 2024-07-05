@@ -22,9 +22,30 @@
 ### GLOBAL STYLES
 */
 
-header{
+.show-on-mobile{
+    display: none;
+}
+.hide-on-mobile{
+    display: flex;
+}
+
+.default-header{
     width: 100%;
     height: 100px;
+    background: rgba($background, 1);
+    color: $text;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+
+    transition: all 250ms;
+}
+
+.overview-header{
+    width: 100%;
+    height: 60px;
     background: rgba($background, 1);
     color: $text;
 
@@ -41,7 +62,7 @@ h1{
      line-height: 0;
 }
 
-button{
+.default-button{
     background-color: $primary !important;
     color:$text !important;
     border-radius: 20px;
@@ -52,6 +73,26 @@ button{
     &:hover{
         background-color: $accent !important;
         color: $background !important;
+    }
+}
+
+.overview-button{
+    background-color: $primary !important;
+    color:$text !important;
+    border-radius: 30px;
+    min-width: 40px !important;
+    height: 42px !important;
+    transition: all 250ms;
+    cursor: pointer;
+    &:hover{
+        background-color: $accent !important;
+        color: $background !important;
+    }
+
+    mat-icon{
+        font-size: 16px;
+        padding: 0;
+        margin: 0;
     }
 }
 
@@ -67,7 +108,7 @@ a{
     cursor: pointer;
 }
 
-.logo-text {
+.default-logo-text {
     color: $text;
     border: solid 3px;
     border-image: linear-gradient(to right, #09f1b8, #00a2ff, #ff00d2, #fed90f) 1;
@@ -78,6 +119,22 @@ a{
 
     mat-icon {
         color: $text;
+    }
+}
+
+.overview-logo-text {
+    color: $text;
+    padding: 8px 18px;
+    margin-left: 64px;
+    display: flex;
+    align-items: center;
+
+    h1{
+        font-size: 16px;
+    }
+
+    mat-icon {
+        color: $accent;
     }
 }
 
@@ -98,15 +155,56 @@ a{
 
 /* MEDIA QUERRYS*/
 @media (max-width: 720px) {
+    .show-on-mobile{
+        display: flex;
+    }
+    .hide-on-mobile{
+        display: none;
+    }
+
+    .default-button-mobile{
+        background-color: $primary !important;
+        color:$text !important;
+        border-radius: 30px;
+        min-width: 40px !important;
+        height: 42px !important;
+        transition: all 250ms;
+        margin-right: 16px;
+        cursor: pointer;
+        &:hover{
+            background-color: $accent !important;
+            color: $background !important;
+        }
+    
+        mat-icon{
+            font-size: 16px;
+            padding: 0;
+            margin: 0;
+        }
+    }
+
     .pad-rl-64{
         padding:0 16px;
     }
 
-    .logo-text{
+    .default-logo-text,
+    .overview-logo-text{
         margin-left: 16px;
     }
 
     h1{
         font-size: 16px;
+    }
+
+    .default-button{
+        border-radius: 20px;
+        width: 120px;
+        height: 40px;
+        transition: all 250ms;
+        cursor: pointer;
+        &:hover{
+            background-color: $accent !important;
+            color: $background !important;
+        }
     }
 }

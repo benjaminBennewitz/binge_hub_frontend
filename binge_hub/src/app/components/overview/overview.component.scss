@@ -74,52 +74,93 @@ button {
 }
 
 .overview-bg {
-    background-image: url(../../../assets/img/register.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
     width: 100%;
 }
 
+.background-video-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  
+    #background-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+  }
+
 .preview-text {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
 
     padding: 0 64px;
 
     color: $text;
 
     width: 500px;
-    margin-top: 200px;
-    transition: all 250ms;
+    height: 800px;
+    border-radius: 0 500px 500px 0;
+    transition: all 350ms;
+
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
 
     &:hover{
-        background-color: rgba(#000000, 0.5);
-        border-radius: 20px;
+        background: linear-gradient(to left, $background 97%, $accent 3%);
+        border-radius: 0 0 0 0;
     }
 }
 
 .media-bar{
     display: flex;
     flex-direction: column;
-    padding:0 64px;
+    padding:0 0 0 64px;
+    width: 100vw;
 }
 
-.this-is-new{
+.media-thumbs-container {
     display: flex;
     justify-content: flex-start;
     align-items: first baseline;
     gap: 32px;
-
-    max-width: 100vw;
+    cursor: grab;
+    width: 100vw;
     overflow-x: auto;
-
-    img{
-        width: 18%;
-        height: auto;
+    scrollbar-width: none;
+  
+    height: 300px;
+    
+    img {
+      max-width: 100%;
+      height: 100%;
+      transition: all ease-in 250ms;
+      object-fit: cover;
+  
+      &:hover {
+        opacity: 0.6;
+        transform: scale(1.05);
+      }
     }
+  
+    img:last-child {
+      margin-right: 100px;
+    }
+  }
+  
+
+.thumbs-gallery{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 250ms;
 }
 
 /* MEDIA QUERRYS*/

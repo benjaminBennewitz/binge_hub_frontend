@@ -115,6 +115,17 @@ mat-drawer-content {
     height: auto;
 }
 
+/* TOOLTIP STYLES */
+.cdk-overlay-container .mat-mdc-tooltip {
+    --mdc-plain-tooltip-container-color: yellow;
+    --mdc-plain-tooltip-supporting-text-color: #070f27;
+    --mdc-plain-tooltip-container-shape: 4px;
+    --mdc-plain-tooltip-supporting-text-line-height: 22px;
+    --mdc-plain-tooltip-supporting-text-size: 14px;
+    --mdc-plain-tooltip-supporting-text-weight: 900;
+    --mdc-tooltip-word-break: normal;
+  }
+
 /* STYLES FOR SCROLLBARS */
 /* Chrome specific styles */
 .chrome{
