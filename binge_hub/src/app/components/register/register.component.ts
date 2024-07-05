@@ -1,25 +1,46 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  AbstractControl,
+  ValidatorFn,
+  ValidationErrors,
+} from '@angular/forms';
+import { SnackbarComponent } from '../snackbar/snackbar.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup; // Non-null Assertion Operator '!'
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private snackbarComponent: SnackbarComponent,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.registerForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(18)]],
-      confirmPassword: ['', Validators.required]
-    }, {
+    this.validation()
+  }
+
+  /**
+   * helper function for form validation
+   */
+  validation(){
+    this.registerForm = this.fb.group(
+      {
+        email: ['', [Validators.required, Validators.email]],
+        password: ['',[ Validators.required, Validators.minLength(3), Validators.maxLength(18)],],
+        confirmPassword: ['', Validators.required],
+      },
       // Custom Validator for password matching
-      validators: this.passwordMatchValidator
-    });
+      {validators: this.passwordMatchValidator,}
+    );
     // checks password matching every second
     setInterval(() => {
       this.checkPasswords();
@@ -28,14 +49,17 @@ export class RegisterComponent implements OnInit {
 
   /**
    * costum validator for password machting
-   * @param control 
-   * @returns 
+   * @param control
+   * @returns
    */
-  passwordMatchValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  passwordMatchValidator: ValidatorFn = (
+    control: AbstractControl
+  ): ValidationErrors | null => {
     const password = control.get('password');
     const confirmPassword = control.get('confirmPassword');
 
-    const passwordsMatch = password && confirmPassword && password.value === confirmPassword.value;
+    const passwordsMatch =
+      password && confirmPassword && password.value === confirmPassword.value;
     return passwordsMatch ? null : { passwordMismatch: true };
   };
 
@@ -62,22 +86,23 @@ export class RegisterComponent implements OnInit {
    * Displays an error message if the request fails.
    */
   register() {
-    if (this.registerForm.invalid) {
-      return;
-    }
-
-    const body = {
-      email: this.registerForm.value.email,
-      password: this.registerForm.value.password
-    };
-
-    console.log('Form data to be submitted:', body);
+    this.registerDialog();
   }
 
-    /**
+  /**
+   * calls the registration successful snackbar
+   */
+  registerDialog() {
+    this.snackbarComponent.openSnackBar('Registration successful! Please see your emails', true, true);
+    setTimeout(() => {
+      this.router.navigate(['/login']);
+    }, 1500); // Delay of 1.5 seconds
+  }
+
+  /**
    * step back helper function
    */
-    stepBack(){
-      window.history.back();
-    }
+  stepBack() {
+    window.history.back();
+  }
 }

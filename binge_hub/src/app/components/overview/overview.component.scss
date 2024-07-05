@@ -169,6 +169,10 @@ button {
         font-size: 26px;
     }
 
+    h2, h3, h4, h5{
+        font-size: 24px;
+    }
+
     p{
         font-size: 14px;
     }
@@ -178,7 +182,7 @@ button {
     }
 
     .preview-text{
-        padding:0 16px;
+        padding:0 32px;
         width: 90%;
     }
 
@@ -193,5 +197,11 @@ button {
             width: 34%;
             height: auto;
         }
+    }
+
+    button {
+        border-radius: 20px;
+        width: 120px;
+        height: 40px;
     }
 }
