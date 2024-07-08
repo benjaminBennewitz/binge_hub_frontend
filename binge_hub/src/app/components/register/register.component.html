@@ -6,11 +6,11 @@
             <div>
                 <mat-form-field>
                     <mat-label>E-Mail</mat-label>
-                    <input matInput formControlName="email" type="email" required>
+                    <input matInput formControlName="username" type="email" required name="username">
                     <mat-error
-                        *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
-                        <span *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</span>
-                        <span *ngIf="registerForm.get('email')?.errors?.['email']">Please enter a valid email address.</span>
+                        *ngIf="registerForm.get('username')?.invalid && (registerForm.get('username')?.dirty || registerForm.get('username')?.touched)">
+                        <span *ngIf="registerForm.get('username')?.errors?.['required']">Email is required.</span>
+                        <span *ngIf="registerForm.get('username')?.errors?.['username']">Please enter a valid email address.</span>
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field>
@@ -34,7 +34,7 @@
                 </mat-form-field>
             </div>
             <div class="flex-c-c gap-64">
-                <button mat-button [disabled]="registerForm.invalid">
+                <button mat-button type="submit" [disabled]="registerForm.invalid">
                     <mat-icon>check</mat-icon> Get started
                 </button>
             </div>

@@ -6,7 +6,7 @@
             <div>
                 <mat-form-field>
                     <mat-label>E-Mail</mat-label>
-                    <input matInput formControlName="email" type="email" required name="email">
+                    <input matInput formControlName="username" type="email" required name="username">
                     <mat-error
                         *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
                         <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</span>

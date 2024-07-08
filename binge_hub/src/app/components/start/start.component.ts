@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 
 export class StartComponent {
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  usernameFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   constructor(private router: Router) {}
 
@@ -17,6 +17,10 @@ export class StartComponent {
    * just redirect do register
    */
   toSignUp() {
-    this.router.navigate(['/register']);
-  }
+    if (this.usernameFormControl.valid) {
+      this.router.navigate(['/register'], { queryParams: { username: this.usernameFormControl.value } });
+    } else {
+      this.usernameFormControl.markAsTouched();
+    }
+  }  
 }

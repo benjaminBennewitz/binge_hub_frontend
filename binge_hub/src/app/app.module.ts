@@ -31,11 +31,14 @@ import { CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StartComponent } from './components/start/start.component';
 import { RevealAnimationComponent } from './components/reveal-animation/reveal-animation.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { LegalsComponent } from './components/legals/legals.component';
 import { SnackMsgComponent } from './components/snack-msg/snack-msg.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { ButtonVisibilityService } from './services/button-visibility.service';
+import { AuthGuard } from './services/auth-guard.service';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { ConfirmationSentComponent } from './components/confirmation-sent/confirmation-sent.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,7 @@ import { ButtonVisibilityService } from './services/button-visibility.service';
     LegalsComponent,
     SnackMsgComponent,
     SnackbarComponent,
+    ConfirmationSentComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,6 +85,14 @@ import { ButtonVisibilityService } from './services/button-visibility.service';
   providers: [
     SnackbarComponent,
     ButtonVisibilityService,
+    AuthGuard,
+    provideRouter(routes),
+    provideHttpClient(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

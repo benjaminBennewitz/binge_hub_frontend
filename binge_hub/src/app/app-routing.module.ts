@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { StartComponent } from './components/start/start.component';
 import { OverviewComponent } from './components/overview/overview.component';
+import { ConfirmationSentComponent } from './components/confirmation-sent/confirmation-sent.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },

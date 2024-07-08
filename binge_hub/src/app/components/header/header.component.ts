@@ -65,6 +65,8 @@ export class HeaderComponent {
    */
   logOut() {
     this.logOutDialog();
+    localStorage.removeItem('bh-token');
+    localStorage.removeItem('username');
   }
 
   /**

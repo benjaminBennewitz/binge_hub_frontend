@@ -13,6 +13,9 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
   loginForm: FormGroup;
 
+  username: string = '';
+  password: string = '';
+
   constructor(
     private fb: FormBuilder,
     private snackbarComponent: SnackbarComponent,
@@ -21,22 +24,8 @@ export class LoginComponent {
     private validatorsService: FormValidationService
   ) {
     this.loginForm = this.fb.group({
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          this.validatorsService.forbiddenCharactersValidator(),
-        ],
-      ],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.maxLength(18),
-        ],
-      ],
+      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12), this.validatorsService.forbiddenCharactersValidator()]],
+      password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]]
     });
   }
 
@@ -52,10 +41,26 @@ export class LoginComponent {
 
   /**
    * login function
-   * @returns
+   * @returns 
    */
-  login() {
-    this.loginDialog()
+  async login() {
+    if (this.loginForm.invalid) {
+      return;
+    }
+    const { username, password } = this.loginForm.value;
+    try {
+      let resp: any = await this.as.loginWithEmailAndPassword(username, password);
+      console.log(resp);
+      localStorage.setItem('bh-token', resp['token']);
+      localStorage.setItem('username', username);
+      this.snackbarComponent.openSnackBar('Login successful!', true, true);
+      setTimeout(() => {
+        this.router.navigateByUrl('/overview');
+      }, 1500);
+    } catch (e) {
+      this.snackbarComponent.openSnackBar('Login denied!', false, false);
+      console.error(e);
+    }
   }
 
   /**

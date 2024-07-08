@@ -9,21 +9,21 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
 
-  private emailSource = new BehaviorSubject<string>('');
-  currentUsername = this.emailSource.asObservable();
+  private usernameSource = new BehaviorSubject<string>('');
+  currentUsername = this.usernameSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
   /**
-   * Sends a login request with the provided email and password.
-   * @param email 
+   * Sends a login request with the provided username and password.
+   * @param username 
    * @param password 
    * @returns 
    */
-  public loginWithUserAndPassword(email:string, password:string){
-    const url = environment.baseUrl + '/login/';
+  public loginWithEmailAndPassword(username:string, password:string){
+    const url = environment.apiUrl + '/login/';
     const body = {
-      "email": email,
+      "username": username,
       "password": password
     }
     return lastValueFrom(this.http.post(url, body));
@@ -34,6 +34,6 @@ export class AuthService {
    * @returns 
    */
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem('bh-token');
   }
 }
