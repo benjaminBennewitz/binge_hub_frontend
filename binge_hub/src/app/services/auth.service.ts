@@ -12,7 +12,7 @@ export class AuthService {
   private usernameSource = new BehaviorSubject<string>('');
   currentUsername = this.usernameSource.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   /**
    * Sends a login request with the provided username and password.
@@ -35,5 +35,21 @@ export class AuthService {
    */
   isLoggedIn(): boolean {
     return !!localStorage.getItem('bh-token');
+  }
+
+  /**
+   * 
+   */
+  fetchCsrfToken() {
+    this.http.get<{ csrf_token: string }>('http://localhost:8000/api/get-csrf-token/', { withCredentials: true })
+      .subscribe(
+        response => {
+          localStorage.setItem('csrf_token', response.csrf_token);
+          console.log('Fetching CSRF token successful');
+        },
+        error => {
+          console.error('Error fetching CSRF token:', error);
+        }
+      );
   }
 }

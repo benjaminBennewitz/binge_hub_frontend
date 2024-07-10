@@ -1,37 +1,34 @@
+// auth-interceptor.ts
+
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, throwError, Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
-  /**
-   * Intercepts HTTP requests and adds an Authorization header with a token from local storage,
-   * if available. Handles HTTP error responses, specifically redirecting to '/login' on 401 Unauthorized.
-   * @param request The HTTP request to intercept and modify headers.
-   * @param next The HTTP handler to pass the modified request to.
-   * @returns An Observable of the HTTP event stream with error handling.
-   */
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem('bh-token');
-    if (token) {
+    const csrfToken = localStorage.getItem('csrf_token');
+
+    // Add CSRF token to headers for POST requests
+    if (csrfToken && request.method === 'POST') {
       request = request.clone({
-        setHeaders: { Authorization: `Token ${token}` }
+        headers: request.headers.set('X-CSRFToken', csrfToken),
+        withCredentials: true  // Ensure withCredentials is set for cookie transmission
       });
     }
 
-    return next.handle(request).pipe(catchError((err) => {
-      if (err instanceof HttpErrorResponse) {
-        if (err.status === 401) {
-          this.router.navigateByUrl('/start');
+    return next.handle(request).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          // Handle 401 Unauthorized (e.g., redirect to login page)
+          this.router.navigate(['/login']);
         }
-      }
-      return throwError(() => err);
-    }));
+        return throwError(error);
+      })
+    );
   }
 }

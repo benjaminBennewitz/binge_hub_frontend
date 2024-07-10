@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { FormValidationService } from '../../services/form-validation.service';
 import { environment } from '../../../environments/environment.development';
+import { catchError, throwError } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -15,6 +17,7 @@ import { environment } from '../../../environments/environment.development';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup; // Non-null Assertion Operator '!'
+  csrfToken!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -22,22 +25,12 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private vs: FormValidationService,
-    private http: HttpClient
-  ) {
-    this.registerForm = this.fb.group({
-      username: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          this.vs.forbiddenCharactersValidator(),
-        ],
-      ],
-      password: ['', [Validators.required, Validators.minLength(3)]],
-    });
-  }
+    private http: HttpClient,
+    private as: AuthService,
+  ) {}
 
   ngOnInit(): void {
+    this.as.fetchCsrfToken();
     this.validation();
     this.getEmailAsUsername();
   }
@@ -63,8 +56,9 @@ export class RegisterComponent implements OnInit {
   validation() {
     this.registerForm = this.fb.group(
       {
-        username: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(18)]],
+        username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(18), this.vs.forbiddenCharactersValidator(),]],
+        email: ['', [Validators.required, Validators.email, this.vs.forbiddenCharactersValidator(),]],
+        password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(18), this.vs.forbiddenCharactersValidator(),]],
         confirmPassword: ['', Validators.required],
       },
       { validators: this.passwordMatchValidator }
@@ -110,26 +104,26 @@ export class RegisterComponent implements OnInit {
    * Displays an error message if the request fails.
    */
   register() {
-    if (this.registerForm.invalid) {
-      return;
-    }
-
     const body = {
       username: this.registerForm.value.username,
+      email: this.registerForm.value.email,
       password: this.registerForm.value.password,
     };
-
-    this.http.post(`${environment.apiUrl}/register/`, body).subscribe({
+  
+    this.http.post('http://localhost:8000/accounts/register/', body).subscribe({
       next: (_response: any) => {
-        this.registerDialog();
+        console.log('Registration successful');
+        // Handle success, e.g., show success message
       },
       error: (error: any) => {
         console.error('Registration failed', error);
-        this.snackbarComponent.openSnackBar('Registration failed!', false, false);
+        // Handle error, e.g., show error message
       },
     });
   }
-
+  
+  
+  
   /**
    * calls the registration successful snackbar
    */
