@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -104,11 +104,8 @@ export class RegisterComponent implements OnInit {
    * Displays an error message if the request fails.
    */
   register() {
+    console.log('Starting registration process...');
     console.log('Registering user with data:', this.registerForm.value);
-    if (this.registerForm.invalid) {
-      console.log('Form is invalid, cannot register.');
-      return;
-    }
   
     const body = {
       username: this.registerForm.value.username,
@@ -116,31 +113,33 @@ export class RegisterComponent implements OnInit {
       password: this.registerForm.value.password,
     };
   
-    console.log('Sending registration request:', body);
-  
-    // Fetch CSRF token from localStorage
-    const csrfToken = localStorage.getItem('csrf_token');
-  
+    const csrfToken = localStorage.getItem('bh-csrf_token');
     if (csrfToken) {
-      const headers = {
+      console.log('CSRF token found in localStorage:', csrfToken);
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
         'X-CSRFToken': csrfToken
-      };
+      });
   
       this.http.post('http://localhost:8000/accounts/register/', body, { headers }).subscribe({
-        next: (_response: any) => {
-          console.log('Registration successful');
-          // Handle success, e.g., show success message
+        next: (response: any) => {
+          console.log('Registration successful', response);
+          // Handle success: z.B. Benutzer benachrichtigen oder weiterleiten
         },
-        error: (error: any) => {
+        error: (error: HttpErrorResponse) => {
           console.error('Registration failed', error);
-          // Handle error, e.g., show error message
-        },
+          // Log the entire error object for detailed inspection
+          console.error('Full error object:', error);
+          // Handle error: z.B. Benutzer informieren oder Fehlermeldung anzeigen
+        }
       });
     } else {
       console.error('CSRF token not found in localStorage.');
-      // Handle error, e.g., show error message or retry fetching CSRF token
+      // Handle CSRF token error: z.B. Benutzer informieren oder Fehlermeldung anzeigen
     }
   }
+  
+  
   
   
   /**
