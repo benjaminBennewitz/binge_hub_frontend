@@ -36,15 +36,15 @@ export class RegisterComponent implements OnInit {
   }
 
   /**
-   * gets the username (email) from start component
-   * sets the username in register field username alias email
+   * gets the email (email) from start component
+   * sets the email in register field username alias email
    */
   getEmailAsUsername() {
     this.route.queryParams.subscribe(params => {
-      const username = params['username'];
-      if (username) {
+      const email = params['email'];
+      if (email) {
         this.registerForm.patchValue({
-          username: username
+          email: email
         });
       }
     });
@@ -104,24 +104,43 @@ export class RegisterComponent implements OnInit {
    * Displays an error message if the request fails.
    */
   register() {
+    console.log('Registering user with data:', this.registerForm.value);
+    if (this.registerForm.invalid) {
+      console.log('Form is invalid, cannot register.');
+      return;
+    }
+  
     const body = {
       username: this.registerForm.value.username,
       email: this.registerForm.value.email,
       password: this.registerForm.value.password,
     };
   
-    this.http.post('http://localhost:8000/accounts/register/', body).subscribe({
-      next: (_response: any) => {
-        console.log('Registration successful');
-        // Handle success, e.g., show success message
-      },
-      error: (error: any) => {
-        console.error('Registration failed', error);
-        // Handle error, e.g., show error message
-      },
-    });
-  }
+    console.log('Sending registration request:', body);
   
+    // Fetch CSRF token from localStorage
+    const csrfToken = localStorage.getItem('csrf_token');
+  
+    if (csrfToken) {
+      const headers = {
+        'X-CSRFToken': csrfToken
+      };
+  
+      this.http.post('http://localhost:8000/accounts/register/', body, { headers }).subscribe({
+        next: (_response: any) => {
+          console.log('Registration successful');
+          // Handle success, e.g., show success message
+        },
+        error: (error: any) => {
+          console.error('Registration failed', error);
+          // Handle error, e.g., show error message
+        },
+      });
+    } else {
+      console.error('CSRF token not found in localStorage.');
+      // Handle error, e.g., show error message or retry fetching CSRF token
+    }
+  }
   
   
   /**

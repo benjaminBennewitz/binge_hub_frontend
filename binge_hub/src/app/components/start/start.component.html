@@ -9,12 +9,12 @@
             <form class="flex-c-c">
                 <mat-form-field class="example-full-width">
                     <mat-label>Email</mat-label>
-                    <input type="email" matInput [formControl]="usernameFormControl" name="username">
+                    <input type="email" matInput [formControl]="emailFormControl" name="email">
                     <mat-error
-                        *ngIf="usernameFormControl.hasError('email') && !usernameFormControl.hasError('required')">
+                        *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                         Please enter a valid email address
                     </mat-error>
-                    <mat-error *ngIf="usernameFormControl.hasError('required')">
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
                         Email is <strong>required</strong>
                     </mat-error>
                 </mat-form-field>

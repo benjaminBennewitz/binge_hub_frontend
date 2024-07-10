@@ -9,18 +9,18 @@ import { Router } from '@angular/router';
 })
 
 export class StartComponent {
-  usernameFormControl = new FormControl('', [Validators.required, Validators.email]);
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   constructor(private router: Router) {}
 
   /**
-   * just redirect do register
+   * just redirect to register
    */
   toSignUp() {
-    if (this.usernameFormControl.valid) {
-      this.router.navigate(['/register'], { queryParams: { username: this.usernameFormControl.value } });
+    if (this.emailFormControl.valid) {
+      this.router.navigate(['/register'], { queryParams: { email: this.emailFormControl.value } });
     } else {
-      this.usernameFormControl.markAsTouched();
+      this.emailFormControl.markAsTouched();
     }
   }  
 }

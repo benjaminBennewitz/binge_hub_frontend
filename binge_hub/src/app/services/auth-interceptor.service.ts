@@ -11,7 +11,7 @@ export class AuthInterceptorService implements HttpInterceptor {
   constructor(private router: Router) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const csrfToken = localStorage.getItem('csrf_token');
+    const csrfToken = localStorage.getItem('bh-csrf_token');
 
     // Add CSRF token to headers for POST requests
     if (csrfToken && request.method === 'POST') {
@@ -25,7 +25,7 @@ export class AuthInterceptorService implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
           // Handle 401 Unauthorized (e.g., redirect to login page)
-          this.router.navigate(['/login']);
+          this.router.navigate(['/start']);
         }
         return throwError(error);
       })

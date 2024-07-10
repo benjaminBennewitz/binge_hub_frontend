@@ -44,7 +44,7 @@ export class AuthService {
     this.http.get<{ csrf_token: string }>('http://localhost:8000/api/get-csrf-token/', { withCredentials: true })
       .subscribe(
         response => {
-          localStorage.setItem('csrf_token', response.csrf_token);
+          localStorage.setItem('bh-csrf_token', response.csrf_token);
           console.log('Fetching CSRF token successful');
         },
         error => {
