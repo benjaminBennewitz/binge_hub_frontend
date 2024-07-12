@@ -96,7 +96,7 @@ mat-drawer-content {
 
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {
     background-color: transparent !important;
-    border: 1.5px solid transparent !important; /* Dies ist notwendig, um den Rahmen sichtbar zu machen */
+    border: 1.5px solid transparent !important;
     border-image: linear-gradient(to right, #09f1b8, #00a2ff, #ff00d2, #fed90f) 1 !important;
 }
 
