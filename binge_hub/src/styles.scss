@@ -153,3 +153,39 @@ mat-drawer-content {
         scrollbar-width: thin;
     }
 }
+
+.legals {
+    color: #ffffff;
+    opacity: 0.8;
+    padding: 8px 16px;
+    position: absolute;
+    bottom: 32px;
+    transition: all 250ms;
+}
+
+.legals p:hover {
+    cursor: pointer;
+    background: yellow;
+    color: #070f24;
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.legals p {
+    color: #ffffff;
+    opacity: 0.8;
+    padding: 8px 16px;
+    transition: all 250ms;
+    border-radius: 15px;
+}
+
+.legals a{
+    all:unset;
+}
+
+/* MEDIA QUERRYS*/
+@media (max-width: 720px) {
+    .legals p{
+        font-size: 14px;
+    }
+}

@@ -31,12 +31,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StartComponent } from './components/start/start.component';
 import { RevealAnimationComponent } from './components/reveal-animation/reveal-animation.component';
 import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient } from '@angular/common/http';
-import { LegalsComponent } from './components/legals/legals.component';
 import { SnackMsgComponent } from './components/snack-msg/snack-msg.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { ButtonVisibilityService } from './services/button-visibility.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { ImprintComponent } from './components/imprint/imprint.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
@@ -46,9 +47,10 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     HeaderComponent,
     StartComponent,
     RevealAnimationComponent,
-    LegalsComponent,
     SnackMsgComponent,
     SnackbarComponent,
+    ImprintComponent,
+    PrivacyPolicyComponent,
   ],
   imports: [
     BrowserModule,

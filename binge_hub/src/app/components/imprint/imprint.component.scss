@@ -1,0 +1,80 @@
+/*###############################
+###
+###     GLOBAL STYLES FOR IMPRINT
+###     BINGE HUB FRONTEND
+###     BASED ON: ANGULAR 17
+###     AUTHOR: Benjamin Benenwitz
+###
+###
+***       ██████╗  ▀█
+***       ██╔══██╗ █▄
+***       ██████╦╝
+***       ██╔══██╗
+***       ██████╦╝
+***       ╚═════╝
+###
+###
+#################################*/
+
+@import '../../../colors.scss';
+
+/*
+### GLOBAL STYLES
+*/
+section{
+    position: absolute;
+    top:120px;
+    left: 0;
+    max-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap:16px;
+    width: 100%;
+}
+
+.wrapper{
+    height: 700px;
+    max-height: 900px;
+    width: 1300px;
+    max-width: 1800px;
+    overflow: auto;
+
+    padding: 8px 64px 64px 64px;
+
+    color:$text;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.back-icon {
+    padding:16px 0 0 0;
+    width: fit-content;
+    transition: all 250ms;
+
+    display: flex;
+    justify-content: flex-start;
+
+    mat-icon {
+        transition: all 250ms;
+        padding: 8px;
+        background-color: $accent;
+        color:$background;
+
+        &:hover {
+            background-color: $primary;
+            transform: scale(1.1);
+            color: $text;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    }
+}
+
+h1, h2, h3{
+    line-height: 1;
+}
