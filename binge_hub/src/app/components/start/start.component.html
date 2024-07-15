@@ -7,17 +7,6 @@
             <p>Watch whenever you want wherever you want</p>
             <p>Enter your email to create or restart your subscription</p>
             <form class="flex-c-c">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Email</mat-label>
-                    <input type="email" matInput [formControl]="emailFormControl" name="email">
-                    <mat-error
-                        *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                        Please enter a valid email address
-                    </mat-error>
-                    <mat-error *ngIf="emailFormControl.hasError('required')">
-                        Email is <strong>required</strong>
-                    </mat-error>
-                </mat-form-field>
                 <div>
                     <button mat-raised-button (click)="toSignUp()" type="button">Sign Up ></button>
                 </div>

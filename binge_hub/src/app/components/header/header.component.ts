@@ -49,7 +49,7 @@ export class HeaderComponent {
           header.classList.remove('hide');
         }
       }, 500);
-    }, 4000);
+    }, 3000);
   }
 
   /**

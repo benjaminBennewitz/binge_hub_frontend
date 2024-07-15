@@ -1,7 +1,6 @@
 import { LoginComponent } from './components/login/login.component';
 import { OverviewComponent } from './components/overview/overview.component';
 import { HeaderComponent } from './components/header/header.component';
-import { RegisterComponent } from './components/register/register.component';
 
 import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
@@ -38,7 +37,6 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { ButtonVisibilityService } from './services/button-visibility.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
-import { ConfirmationSentComponent } from './components/confirmation-sent/confirmation-sent.component';
 
 @NgModule({
   declarations: [
@@ -46,13 +44,11 @@ import { ConfirmationSentComponent } from './components/confirmation-sent/confir
     LoginComponent,
     OverviewComponent,
     HeaderComponent,
-    RegisterComponent,
     StartComponent,
     RevealAnimationComponent,
     LegalsComponent,
     SnackMsgComponent,
     SnackbarComponent,
-    ConfirmationSentComponent,
   ],
   imports: [
     BrowserModule,
