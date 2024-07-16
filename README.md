@@ -33,6 +33,10 @@ Follow these steps to set up the BINGE HUB Frontend on your local machine:
     ng serve
     ```
 5. Open your browser and navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+7. Check URLS and Ports:
+    ```right port/url
+    make sure to use port :4000 for frontend otherwhise some links doesnt work
+    ```
 
 ### Configuration
 Ensure the backend API URL is correctly set in your environment configuration files. Modify the environment files (`src/environments/environment.ts` and `src/environments/environment.prod.ts`) as needed to match your backend API settings.
