@@ -41,7 +41,8 @@ export class AuthService {
    * 
    */
   fetchCsrfToken() {
-    this.http.get<{ csrf_token: string }>('http://localhost:8000/api/get-csrf-token/', { withCredentials: true })
+    const apiUrl = environment.apiUrl;
+    this.http.get<{ csrf_token: string }>(`${apiUrl}/get-csrf-token/`, { withCredentials: true })
       .subscribe(
         response => {
           localStorage.setItem('bh-csrf_token', response.csrf_token);
@@ -51,5 +52,14 @@ export class AuthService {
           console.error('Error fetching CSRF token:', error);
         }
       );
+  }
+
+   /**
+   * function for performing the password reset
+   * @param email
+   */
+   resetPassword(email: string) {
+    const apiUrl = environment.apiUrl;
+    return this.http.post<any>(`${apiUrl}/get-csrf-token/`, { email }, { withCredentials: true });
   }
 }

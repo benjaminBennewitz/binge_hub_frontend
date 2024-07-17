@@ -1,0 +1,27 @@
+<section>
+    <div class="login-bg">
+        <form [formGroup]="resetForm" (ngSubmit)="redirect()">
+            <div class="back-icon"><mat-icon (click)="stepBack()">arrow_back</mat-icon></div>
+            <h1>Please enter your email</h1>
+            <div>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" type="email" required name="email">
+                    <mat-error *ngIf="resetForm.get('email')?.invalid">
+                        <span *ngIf="resetForm.get('email')?.errors?.['required']">Email is required.</span>
+                        <span *ngIf="resetForm.get('email')?.errors?.['email']">Email address not found.</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="flex-c-c gap-64">
+                <button mat-button [disabled]="resetForm.invalid">
+                    <mat-icon>gpp_maybe</mat-icon> Reset password
+                </button>
+            </div>
+        </form>
+        <div class="flex-c-c gap-64 legals">
+            <a href="/privacy-policy"><p>Privacy Policy</p></a>
+            <a href="/imprint"><p>Imprint</p></a>
+        </div>
+    </div>
+</section>

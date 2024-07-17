@@ -69,4 +69,14 @@ export class LoginComponent {
   stepBack(){
     window.history.back();
   }
+
+  /**
+   * shows the notification for password reset
+   */
+  passReset(){
+    this.snackbarComponent.openSnackBar('Please enter you email adress', true, true);
+      setTimeout(() => {
+        this.router.navigateByUrl('/pass-reset');
+      }, 1500);
+  }
 }

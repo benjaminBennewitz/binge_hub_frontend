@@ -38,6 +38,8 @@ import { AuthGuard } from './services/auth-guard.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { ImprintComponent } from './components/imprint/imprint.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { PassResetComponent } from './components/pass-reset/pass-reset.component';
+import { NewPassComponent } from './components/new-pass/new-pass.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
     SnackbarComponent,
     ImprintComponent,
     PrivacyPolicyComponent,
+    PassResetComponent,
+    NewPassComponent,
   ],
   imports: [
     BrowserModule,
