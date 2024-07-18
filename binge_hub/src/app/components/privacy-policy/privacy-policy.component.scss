@@ -116,3 +116,32 @@ li {
     width: 1em;
     margin-left: -1em;
   }
+
+/* MEDIA QUERRYS*/
+@media (max-width: 501px) {
+    section{
+        flex-direction: column;
+        max-height: 800px;
+    }
+    .wrapper{
+        width: 90%;
+        max-width: 1800px;
+        overflow: auto;
+    
+        padding: 8px 16px 64px 16px;
+    
+        color:$text;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    .back-icon{
+        margin-left: 16px;
+    }
+
+    p{
+        word-break: break-all;
+    }
+}

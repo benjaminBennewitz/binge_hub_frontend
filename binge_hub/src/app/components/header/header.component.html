@@ -1,7 +1,7 @@
 <section>
     <header class="flex-sb-c hide over" [ngClass]="{'fade-out': fadeOut, 'overview-header': isOverviewRoute, 'default-header': !isOverviewRoute}">
         <div class="flex-fs-c" [ngClass]="{'overview-logo-text': isOverviewRoute, 'default-logo-text': !isOverviewRoute}" data-text="BINGE HUB">
-            <mat-icon>play_circle</mat-icon><a href="/start"><h1>BINGE HUB</h1></a>
+            <mat-icon>play_circle</mat-icon><a (click)="toStart()"><h1>BINGE HUB</h1></a>
         </div>
 
         <div id="logIn" class="hide-on-mobile pad-rl-64 hide">

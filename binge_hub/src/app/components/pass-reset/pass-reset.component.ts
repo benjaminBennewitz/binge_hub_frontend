@@ -13,6 +13,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class PassResetComponent {
   resetForm: FormGroup;
+  csrfToken: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -23,6 +24,10 @@ export class PassResetComponent {
   ) {
     this.resetForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]});
+  }
+
+  ngOnInit() {
+    this.authService.fetchCsrfToken();
   }
 
   /**
@@ -52,4 +57,18 @@ export class PassResetComponent {
   stepBack(): void {
     window.history.back();
   }
+
+    /**
+   * link to imprint
+   */
+    toImprint(){
+      this.router.navigateByUrl('/imprint');
+    }
+  
+    /**
+     * link to pp
+     */
+    toPP(){
+      this.router.navigateByUrl('/privacy-policy');
+    }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { lastValueFrom } from 'rxjs/internal/lastValueFrom';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ export class AuthService {
 
   private usernameSource = new BehaviorSubject<string>('');
   currentUsername = this.usernameSource.asObservable();
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -21,7 +22,7 @@ export class AuthService {
    * @returns 
    */
   public loginWithEmailAndPassword(username:string, password:string){
-    const url = environment.apiUrl + '/login/';
+    const url = this.apiUrl + '/login/';
     const body = {
       "username": username,
       "password": password
@@ -41,8 +42,7 @@ export class AuthService {
    * 
    */
   fetchCsrfToken() {
-    const apiUrl = environment.apiUrl;
-    this.http.get<{ csrf_token: string }>(`${apiUrl}/get-csrf-token/`, { withCredentials: true })
+    this.http.get<{ csrf_token: string }>(`${this.apiUrl}/get-csrf-token/`, { withCredentials: true })
       .subscribe(
         response => {
           localStorage.setItem('bh-csrf_token', response.csrf_token);
@@ -58,8 +58,7 @@ export class AuthService {
    * function for performing the password reset
    * @param email
    */
-   resetPassword(email: string) {
-    const apiUrl = environment.apiUrl;
-    return this.http.post<any>(`${apiUrl}/get-csrf-token/`, { email }, { withCredentials: true });
+   resetPassword(email: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/password_reset/`, { email }, { withCredentials: true });
   }
 }

@@ -79,4 +79,11 @@ export class HeaderComponent {
       this.router.navigate(['/start']);
     }, 1500); // Delay of 1.5 seconds
   }
+
+    /**
+   * link to imprint
+   */
+    toStart(){
+      this.router.navigateByUrl('/start');
+    }
 }

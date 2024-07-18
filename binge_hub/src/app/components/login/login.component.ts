@@ -79,4 +79,18 @@ export class LoginComponent {
         this.router.navigateByUrl('/pass-reset');
       }, 1500);
   }
+
+  /**
+   * link to imprint
+   */
+  toImprint(){
+    this.router.navigateByUrl('/imprint');
+  }
+
+  /**
+   * link to pp
+   */
+  toPP(){
+    this.router.navigateByUrl('/privacy-policy');
+  }
 }

@@ -1,7 +1,5 @@
 <section>
     <div class="login-bg">
-        <!-- pass-reset.component.html -->
-
         <form [formGroup]="resetForm" (ngSubmit)="redirect()">
             <div class="back-icon"><mat-icon (click)="stepBack()">arrow_back</mat-icon></div>
             <h1>New Password</h1>
@@ -34,8 +32,8 @@
         </form>
 
         <div class="flex-c-c gap-64 legals">
-            <a href="/privacy-policy"><p>Privacy Policy</p></a>
-            <a href="/imprint"><p>Imprint</p></a>
+            <p (click)="toPP()">Privacy Policy</p>
+            <p (click)="toImprint()">Imprint</p>
         </div>
     </div>
 </section>

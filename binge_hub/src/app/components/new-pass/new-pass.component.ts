@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-new-pass',
@@ -15,7 +16,7 @@ export class NewPassComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private snackbarComponent: SnackbarComponent
+    private snackbarComponent: SnackbarComponent,
   ) {
     this.resetForm = this.fb.group({
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(18)]],
@@ -39,4 +40,18 @@ export class NewPassComponent {
   stepBack(): void {
     window.history.back();
   }
+
+    /**
+   * link to imprint
+   */
+    toImprint(){
+      this.router.navigateByUrl('/imprint');
+    }
+  
+    /**
+     * link to pp
+     */
+    toPP(){
+      this.router.navigateByUrl('/privacy-policy');
+    }
 }
