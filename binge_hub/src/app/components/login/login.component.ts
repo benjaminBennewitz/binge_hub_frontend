@@ -76,7 +76,8 @@ export class LoginComponent {
   passReset(){
     this.snackbarComponent.openSnackBar('Please enter you email adress', true, true);
       setTimeout(() => {
-        this.router.navigateByUrl('/pass-reset');
+        const externalUrl = `http://localhost:8000/api/bingeHub/password_reset/`;
+        window.location.href = externalUrl;
       }, 1500);
   }
 
