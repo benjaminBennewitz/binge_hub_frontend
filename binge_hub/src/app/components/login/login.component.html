@@ -20,7 +20,7 @@
                         *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
                         <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</span>
                         <span *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</span>
-                        <span *ngIf="loginForm.get('password')?.errors?.['maxlength']">Password cannot be more than 18 characters long.</span>
+                        <span *ngIf="loginForm.get('password')?.errors?.['maxlength']">Password cannot be more than 20 characters long.</span>
                     </mat-error>
                 </mat-form-field>
             </div>
