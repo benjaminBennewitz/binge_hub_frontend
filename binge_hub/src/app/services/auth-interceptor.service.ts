@@ -1,5 +1,3 @@
-// auth-interceptor.ts
-
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -9,6 +7,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 export class AuthInterceptorService implements HttpInterceptor {
 
   constructor(private router: Router) {}
+
 
   /**
    * inserts the token to every header when posting

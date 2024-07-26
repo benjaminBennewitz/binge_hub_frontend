@@ -13,6 +13,7 @@ export class AuthGuard implements CanActivate {
     private snackbarComponent: SnackbarComponent
   ) {}
 
+
   /**
    * checks if user is logged in, otherwise access to /board will be denied
    * @returns 
@@ -22,7 +23,7 @@ export class AuthGuard implements CanActivate {
       return true; // return true, true = user ist logged in, token is given
     } else {
         this.snackbarComponent.openSnackBar('You must be logged in', false, false);
-        this.router.navigate(['/start']); // redirect to /start page
+        this.router.navigate(['/start']);
         return false;
     }
   }

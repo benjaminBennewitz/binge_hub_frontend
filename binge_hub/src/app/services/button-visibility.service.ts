@@ -19,6 +19,7 @@ export class ButtonVisibilityService {
     });
   }
 
+  
   /**
    * hides or displays specific button by current url
    * hide log in button when url is not /overview

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ResetPassService } from './reset-pass.service';
+import { VideoService } from './video.service';
 
-describe('ResetPassService', () => {
-  let service: ResetPassService;
+describe('VideoService', () => {
+  let service: VideoService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ResetPassService);
+    service = TestBed.inject(VideoService);
   });
 
   it('should be created', () => {

@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class PrivacyPolicyComponent {
 
+  
    /**
    * step back helper function
    */

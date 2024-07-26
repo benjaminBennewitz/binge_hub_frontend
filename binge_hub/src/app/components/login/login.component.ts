@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormValidationService } from '../../services/form-validation.service';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
@@ -24,10 +25,26 @@ export class LoginComponent {
     private validatorsService: FormValidationService
   ) {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12), this.validatorsService.forbiddenCharactersValidator()]],
-      password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
+      username: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(12),
+          this.validatorsService.forbiddenCharactersValidator(),
+        ],
+      ],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(20),
+        ],
+      ],
     });
   }
+
 
   /**
    * calls the login successful snackbar
@@ -39,9 +56,10 @@ export class LoginComponent {
     }, 1500); // Delay of 1.5 seconds
   }
 
+
   /**
    * login function
-   * @returns 
+   * @returns
    */
   async login() {
     if (this.loginForm.invalid) {
@@ -49,7 +67,10 @@ export class LoginComponent {
     }
     const { username, password } = this.loginForm.value;
     try {
-      let resp: any = await this.as.loginWithEmailAndPassword(username, password);
+      let resp: any = await this.as.loginWithEmailAndPassword(
+        username,
+        password
+      );
       console.log(resp);
       localStorage.setItem('bh-token', resp['token']);
       localStorage.setItem('username', username);
@@ -63,35 +84,43 @@ export class LoginComponent {
     }
   }
 
+
   /**
    * step back helper function
    */
-  stepBack(){
+  stepBack() {
     window.history.back();
   }
+
 
   /**
    * shows the notification for password reset
    */
-  passReset(){
-    this.snackbarComponent.openSnackBar('Please enter you email adress', true, true);
-      setTimeout(() => {
-        const externalUrl = `http://localhost:8000/api/bingeHub/password_reset/`;
-        window.location.href = externalUrl;
-      }, 1500);
+  passReset() {
+    this.snackbarComponent.openSnackBar(
+      'Please enter you email adress',
+      true,
+      true
+    );
+    setTimeout(() => {
+      const externalUrl = `http://localhost:8000/api/bingeHub/password_reset/`;
+      window.location.href = externalUrl;
+    }, 1500);
   }
+
 
   /**
    * link to imprint
    */
-  toImprint(){
+  toImprint() {
     this.router.navigateByUrl('/imprint');
   }
+
 
   /**
    * link to pp
    */
-  toPP(){
+  toPP() {
     this.router.navigateByUrl('/privacy-policy');
   }
 }

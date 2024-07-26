@@ -3,62 +3,86 @@
         <div class="overview-bg">
             <div class="background-video-container">
                 <video autoplay muted loop id="background-video">
-                    <source draggable="false" src="../../../assets/video/teaser.mp4" type="video/mp4"> <!--video data-->
+                    <source draggable="false" src="{{ currentVideo }}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <div class="preview-text">
-                    <h1>Breakout</h1> <!--title-->
-                    <p>"Experience the breathless suspense of a perfectly planned prison break in this gripping movie.
-                        Follow as a group of prisoners fight against all odds to regain their freedom.
-                        Intrigue, unexpected twists and the relentless drive for freedom merge into a nail-biting
-                        thriller
-                        that will keep the viewer gripped until the very last second."
-                    </p> <!--description-->
+                    <h1>{{ currentTitle }}</h1>
+                    <p>{{ currentDescription }}</p>
                     <div class="flex-c-c gap-64">
                         <button mat-button (click)="playVideo()"><mat-icon>play_arrow</mat-icon> PLAY</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>        
 
         <div class="media-bar">
             <h2>New on BINGE HUB</h2>
-            <div class="media-thumbs-container" matTooltip="SHIFT + Scroll" [matTooltipPosition]="position.value!" matTooltipShowDelay="550">
-                <img draggable="false" src="../../../assets/img/breakout.jpg">
-                <img draggable="false" src="../../../assets/img/friendship.jpg">
-                <img draggable="false" src="../../../assets/img/majestic-wales.jpg">
-                <img draggable="false" src="../../../assets/img/whispering-shadows.jpg">
-                <img draggable="false" src="../../../assets/img/babys-secrets.jpg">
-                <img draggable="false" src="../../../assets/img/world-of-wonders.jpg">
-                <img draggable="false" src="../../../assets/img/48survive.jpg">
+            <div class="media-thumbs-container">
+                <ng-container *ngFor="let video of newVideos">
+                    <img 
+                        draggable="false" 
+                        [src]="video.thumbnail"
+                        (click)="setVideo(video)" 
+                        [alt]="video.title"
+                    >
+                </ng-container>
             </div>
         </div>
-
+        
         <div class="media-bar">
             <h3>Documentary</h3>
             <div class="media-thumbs-container">
-                <img draggable="false" src="../../../assets/img/majestic-wales.jpg">
-                <img draggable="false" src="../../../assets/img/world-of-wonders.jpg">
-                <img draggable="false" src="../../../assets/img/babys-secrets.jpg">
+                <ng-container *ngFor="let video of documentaryVideos">
+                    <img 
+                        draggable="false" 
+                        [src]="video.thumbnail"
+                        (click)="setVideo(video)" 
+                        [alt]="video.title"
+                    >
+                </ng-container>
             </div>
         </div>
 
         <div class="media-bar">
             <h4>Drama</h4>
-            <div class="media-thumbs-container" matTooltip="SHIFT + Scroll" [matTooltipPosition]="position.value!" matTooltipShowDelay="550">
-                <img draggable="false" src="../../../assets/img/friendship.jpg">
-                <img draggable="false" src="../../../assets/img/48survive.jpg">
-                <img draggable="false" src="../../../assets/img/breakout.jpg">
-                <img draggable="false" src="../../../assets/img/crime.jpg">
-                <img draggable="false" src="../../../assets/img/whispering-shadows.jpg">
+            <div class="media-thumbs-container">
+                <ng-container *ngFor="let video of dramaVideos">
+                    <img 
+                        draggable="false" 
+                        [src]="video.thumbnail"
+                        (click)="setVideo(video)" 
+                        [alt]="video.title"
+                    >
+                </ng-container>
             </div>
         </div>
 
-        <div class="media-bar mr-b-120">
-            <h4>Rommance</h4>
+        <div class="media-bar">
+            <h4>Romance</h4>
             <div class="media-thumbs-container">
-                <img draggable="false" src="../../../assets/img/when-i-met-you.jpg">
-                <img draggable="false" src="../../../assets/img/hate-you.jpg">
+                <ng-container *ngFor="let video of romanceVideos">
+                    <img 
+                        draggable="false" 
+                        [src]="video.thumbnail"
+                        (click)="setVideo(video)" 
+                        [alt]="video.title"
+                    >
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="media-bar">
+            <h4>Crime</h4>
+            <div class="media-thumbs-container">
+                <ng-container *ngFor="let video of crimeVideos">
+                    <img 
+                        draggable="false" 
+                        [src]="video.thumbnail"
+                        (click)="setVideo(video)" 
+                        [alt]="video.title"
+                    >
+                </ng-container>
             </div>
         </div>
     </div>

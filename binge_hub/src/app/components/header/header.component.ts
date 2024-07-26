@@ -16,7 +16,7 @@ export class HeaderComponent {
   constructor(
     private router: Router,
     private snackbarComponent: SnackbarComponent,
-    private buttonVisibilityService: ButtonVisibilityService,
+    private buttonVisibilityService: ButtonVisibilityService
   ) {}
 
   ngOnInit(): void {
@@ -25,16 +25,22 @@ export class HeaderComponent {
     this.checkRoutes();
   }
 
+  
   /**
    * detect the routes and control the right class
    */
-  checkRoutes(){
+  checkRoutes() {
     this.router.events
-      .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+      .pipe(
+        filter(
+          (event): event is NavigationEnd => event instanceof NavigationEnd
+        )
+      )
       .subscribe((event: NavigationEnd) => {
         this.isOverviewRoute = event.urlAfterRedirects === '/overview';
       });
   }
+
 
   /**
    * displays the header after 4 seconds
@@ -52,12 +58,14 @@ export class HeaderComponent {
     }, 3000);
   }
 
+
   /**
    * just redirect do login
    */
   toLogin() {
     this.router.navigate(['/login']);
   }
+
 
   /**
    * log out the user
@@ -70,6 +78,7 @@ export class HeaderComponent {
     localStorage.removeItem('username');
   }
 
+
   /**
    * calls the login successful snackbar
    */
@@ -80,10 +89,11 @@ export class HeaderComponent {
     }, 1500); // Delay of 1.5 seconds
   }
 
-    /**
+
+  /**
    * link to imprint
    */
-    toStart(){
-      this.router.navigateByUrl('/start');
-    }
+  toStart() {
+    this.router.navigateByUrl('/start');
+  }
 }

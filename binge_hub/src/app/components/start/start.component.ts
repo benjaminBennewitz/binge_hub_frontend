@@ -1,15 +1,14 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-start',
   templateUrl: './start.component.html',
-  styleUrl: './start.component.scss'
+  styleUrl: './start.component.scss',
 })
-
 export class StartComponent {
+  constructor(private router: Router) {}
 
-  constructor(private router:Router) {}
 
   /**
    * just redirect to register
@@ -19,17 +18,19 @@ export class StartComponent {
     window.location.href = externalUrl;
   }
 
-    /**
+
+  /**
    * link to imprint
    */
-    toImprint(){
-      this.router.navigateByUrl('/imprint');
-    }
-  
-    /**
-     * link to pp
-     */
-    toPP(){
-      this.router.navigateByUrl('/privacy-policy');
-    }
+  toImprint() {
+    this.router.navigateByUrl('/imprint');
+  }
+
+
+  /**
+   * link to pp
+   */
+  toPP() {
+    this.router.navigateByUrl('/privacy-policy');
+  }
 }

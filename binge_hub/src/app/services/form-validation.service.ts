@@ -9,6 +9,7 @@ export class FormValidationService {
 
   constructor() { }
 
+  
   /**
    * form validation, checks for forbidden characters
    * @returns 
