@@ -38,6 +38,10 @@ Follow these steps to set up the BINGE HUB Frontend on your local machine:
     ```right port/url
     make sure to use port :4000 for frontend otherwhise some links doesnt work
     ```
+7. Check URLS and Ports:
+    ```correct environments
+    make sure to use your own website links/urls in environments.ts
+    ```
 
 ### Configuration
 Ensure the backend API URL is correctly set in your environment configuration files. Modify the environment files (`src/environments/environment.ts` and `src/environments/environment.prod.ts`) as needed to match your backend API settings.
@@ -45,7 +49,7 @@ Ensure the backend API URL is correctly set in your environment configuration fi
 ### Building for Production
 To build the project for production, run:
 ```bash
-ng build --prod
+ng build --configuration production
 ```
 
 ## How Users Can Get Involved
