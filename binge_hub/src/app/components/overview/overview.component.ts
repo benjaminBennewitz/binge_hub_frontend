@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { TooltipPosition } from '@angular/material/tooltip';
 import { VideoService } from '../../services/video.service';
 import { Video } from './video.model';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-overview',
@@ -14,6 +15,9 @@ export class OverviewComponent {
   position = new FormControl(this.positionOptions[0]);
 
   currentVideo: string = '';
+  currentVideo480: string = '';
+  currentVideo720: string = '';
+  currentVideo1080: string = '';
   currentTitle: string = '';
   currentDescription: string = '';
   videos: Video[] = [];
@@ -23,6 +27,8 @@ export class OverviewComponent {
   dramaVideos: Video[] = [];
   romanceVideos: Video[] = [];
   crimeVideos: Video[] = [];
+
+  baseUrl = environment.baseUrl;
 
   constructor(private videoService: VideoService) {}
 
@@ -39,11 +45,10 @@ export class OverviewComponent {
    */
   loadVideos() {
     this.videoService.getVideos().subscribe((data) => {
-      const baseUrl = 'http://localhost:8000';
 
       this.videos = data.map((video) => ({
         ...video,
-        thumbnail: `${baseUrl}${video.thumbnail}`,
+        thumbnail: `${this.baseUrl}${video.thumbnail}`,
       }));
 
       this.categorizeVideos();
@@ -86,7 +91,10 @@ export class OverviewComponent {
    *                It should include properties like video_file, title, and description.
    */
   setVideo(video: Video) {
-    this.currentVideo = `http://localhost:8000${video.video_file}`;
+    this.currentVideo = `${this.baseUrl}${video.video_file}`;
+    this.currentVideo480 = `${this.baseUrl}${video.video_480p_path}`;
+    this.currentVideo720 = `${this.baseUrl}${video.video_720p_path}`;
+    this.currentVideo1080 = `${this.baseUrl}${video.video_1080p_path}`;
     this.currentTitle = video.title;
     this.currentDescription = video.description;
 

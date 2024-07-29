@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { FormValidationService } from '../../services/form-validation.service';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 import { AuthService } from '../../services/auth.service';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-login',
@@ -103,7 +104,7 @@ export class LoginComponent {
       true
     );
     setTimeout(() => {
-      const externalUrl = `http://localhost:8000/api/bingeHub/password_reset/`;
+      const externalUrl = environment.apiUrl + `/password_reset/`;
       window.location.href = externalUrl;
     }, 1500);
   }

@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Video } from '../components/overview/video.model';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VideoService {
-  private apiUrl = 'http://localhost:8000/api/bingeHub/videos/';
+  apiUrlVideo = `${environment.apiUrl}/videos/`;
+
 
   constructor(private http: HttpClient) {}
 
@@ -29,6 +31,6 @@ export class VideoService {
       'Content-Type': 'application/json',
     });
 
-    return this.http.get<Video[]>(this.apiUrl, { headers });
+    return this.http.get<Video[]>(this.apiUrlVideo, { headers });
   }
 }

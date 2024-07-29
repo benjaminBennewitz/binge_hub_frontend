@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-start',
@@ -14,7 +15,7 @@ export class StartComponent {
    * just redirect to register
    */
   toSignUp() {
-    const externalUrl = `http://localhost:8000/accounts/register/`;
+    const externalUrl = `${environment.baseUrl}/accounts/register/`;
     window.location.href = externalUrl;
   }
 
