@@ -38,7 +38,7 @@ Follow these steps to set up the BINGE HUB Frontend on your local machine:
     ```right port/url
     make sure to use port :4000 for frontend otherwhise some links doesnt work
     ```
-7. Check URLS and Ports:
+7. Check production URLS:
     ```correct environments
     make sure to use your own website links/urls in environments.ts
     ```
